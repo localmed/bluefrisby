@@ -1,0 +1,10 @@
+{
+  "name": "bluefrisby",
+  "description": "API tests generated from your api blueprint.",
+  "author": "Evan Cordell <evan@localmed.com>",
+  "dependencies": {
+    "protagonist": "0.5.x",
+    "frisby": "0.6.x"
+  },
+  "engine": "node >= 0.4.1"
+}
