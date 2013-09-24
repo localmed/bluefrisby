@@ -1,10 +1,36 @@
 {
   "name": "bluefrisby",
+  "version": "0.1.0",
   "description": "API tests generated from your api blueprint.",
   "author": "Evan Cordell <evan@localmed.com>",
+  "main": "lib/bluefrisby.js",
+  "bin": {
+    "bluefrisby": "bin/bluefrisby"
+  },
+  "scripts": {
+    "test": "scripts/test",
+    "build": "scripts/build"
+  },
   "dependencies": {
     "protagonist": "0.5.x",
-    "frisby": "0.6.x"
+    "frisby": "0.6.x",
+    "jasmine-node": "1.11.x"
   },
-  "engine": "node >= 0.4.1"
+  "devDependencies": {
+    "coffee-script": "1.6.3"
+    },
+  "repository": {
+    "type": "git",
+    "url": "https://ecordell@bitbucket.org/localmed/bluefrisby.js.git"
+  },
+  "keywords": [
+    "api",
+    "test",
+    "testing",
+    "documenation",
+    "integration",
+    "acceptance"
+  ],
+  "license": "MIT",
+  "engine": "node >= 0.10.18"
 }
