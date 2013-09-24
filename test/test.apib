@@ -1,68 +1,65 @@
 FORMAT: X-1A
 
-# Machines API
+# Test API
+An example API for testing taken from https://github.com/apiaryio/api-blueprint
 
-# Group Machines
+# Group Messages
+Group of all messages-related resources.
 
-# Machines collection [/machines]
+## My Message [/message]
+Let's define a header that is always sent or received with any request made on this resource in addition to what is specified in subsequent actions and their payloads (requests and responses).
 
-## Create a Machine [POST]
-+ Request (application/json)
++ Headers
 
-        {
-          "type": "bulldozer",
-          "name": "willy"
-        }
+        X-Resource-Level-Header: 40
 
-+ Response 202 (application/json)
+### Retrieve a Message [GET]
+Here we will define a header that is always sent or received with any request on this resource using the `GET` HTTP request method.
 
-        {
-          "message": "Accepted"
-        }
++ Headers
 
+        X-Method-Level-Header: 41
 
-## Retreive all Machines [GET]
++ Request Plain Text Message
 
-+ Response 200 (application/json)
-        [{
-            "_id": "52341870ed55224b15ff07ef",
-            "type": "bulldozer",
-            "name": "willy"
-        }]
+    + Headers
 
-# Machine [/machines/{name}]
-+ Parameters
-  + name (required,`willy`)
-
-## Update a Machine [PUT]
-
-+ Request (application/json)
-
-        {
-          "name": "waldo"
-        }
-
-+ Response 200 (application/json)
-
-        {
-          "type": "bulldozer",
-          "name": "waldo",
-          "_id": "5229c6e8e4b0bd7dbb07e29c"
-        }
-
-## Retrieve a Machine [GET]
-+ Parameters
-  + name (required,`waldo`)
+            Accept: text/plain
 
 + Response 200 (text/plain)
 
-        {
-          "type": "bulldozer",
-          "name": "waldo",
-          "_id": "5229c6e8e4b0bd7dbb07e29c"
-        }
+    + Headers
 
-## Delete Message [DELETE]
-+ Parameters
-  + name (required,`waldo`)
+            X-My-Message-Header: 42
+
+    + Body
+
+            Hello World!
+
++ Request JSON Message
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-My-Message-Header: 42
+
+    + Body
+
+            { "message": "Hello World!" }
+
+### Update a Message [PUT]
+
++ Request Update Plain Text Message (text/plain)
+
+        All your base are belong to us.
+
++ Request Update JSON Message (application/json)
+
+        { "message": "All your base are belong to us." }
+
 + Response 204
