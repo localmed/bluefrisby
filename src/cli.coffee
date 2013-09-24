@@ -1,19 +1,13 @@
-protagonist = require '../lib/protagonist'
-frisby = require '../lib/frisby'
+cliUtils = require './cli-utils'
+bluefrisby = require './bluefrisby'
 
 cli = (configuration, callback) ->
-  fs.readFile configuration['blueprintPath'], 'utf8', (error, data) ->
-    if error
-      cliUtils.error error
-      cliUtils.exit 1
-      callback()
-    else
-      protagonist.parse data, (error, result) ->
-        if error
-          cliUtils.error error
-          cliUtils.exit 1
-          callback()
-        else
-          nil
+  try
+    bluefrisby configuration
+    callback
+  catch error
+    cliUtils.error error
+    cliUtils.exit 1
+    callback
 
 module.exports = cli
