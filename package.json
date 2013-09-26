@@ -4,9 +4,6 @@
   "description": "API tests generated from your api blueprint.",
   "author": "Evan Cordell <evan@localmed.com>",
   "main": "lib/bluefrisby.js",
-  "bin": {
-    "bluefrisby": "bin/bluefrisby"
-  },
   "scripts": {
     "test": "scripts/test",
     "build": "scripts/build",
@@ -15,7 +12,9 @@
   "dependencies": {
     "protagonist": "0.5.x",
     "frisby": "0.6.x",
-    "jasmine-node": "1.11.x"
+    "jasmine-node": "1.11.x",
+    "string": "1.6.x",
+    "uri-template": "0.4.x"
   },
   "devDependencies": {
     "coffee-script": "1.6.3"
