@@ -1,10 +1,10 @@
-fs = require 'fs';
-protagonist = require 'protagonist';
-jasmine = require 'jasmine-node';
-frisby = require 'frisby';
-deleteFolderRecursive = require './deleteFolderRecursive'
-string = require 'string'
-util = require 'util'
+fs = require 'fs'
+
+protagonist = require 'protagonist'
+jasmine = require 'jasmine-node'
+frisby = require 'frisby'
+
+walker = require './walker'
 
 bluefrisby = (configuration) ->
     frisby = configuration['frisby'] if configuration['frisby']
@@ -29,49 +29,10 @@ bluefrisby = (configuration) ->
         if error? then throw error
         ast_json = result.ast
 
-    # Clean up directories
-    if fs.existsSync(__dirname + "/../specs/")
-      deleteFolderRecursive(__dirname + "/../specs/")
-    fs.mkdirSync(__dirname + "/../specs/")
-
-    test_string = "var frisby = require('frisby')\n"
     # Walk AST, generate jasmine tests
-    for group in ast_json['resourceGroups']
-      for resource in group.resources
-        for action  in resource.actions
-          console.log("Action: " + JSON.stringify(action) + "\n --------- \n")
-          try
-            test = frisby.create('Get Brightbit Twitter feed')
-              .get('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=brightbit')
-              .expectStatus(200)
-              .expectHeaderContains('content-type', 'application/json')
-              .expectJSON('0', {
-                place: (val) -> expect(val).toMatchOrBeNull("Oklahoma City, OK"),
-                user: {
-                  verified: false,
-                  location: "Oklahoma City, OK",
-                  url: "http://brightb.it"
-                }
-              })
-              .expectJSONTypes('0', {
-                id_str: String,
-                retweeted: Boolean,
-                in_reply_to_screen_name: (val) -> expect(val).toBeTypeOrNull(String),
-                user: {
-                  verified: Boolean,
-                  location: String,
-                  url: String
-                }})
-            console.log(JSON.stringify(test))
-            test_string +=  ("\nfrisby.create(JSON.parse(" + JSON.stringify(test) + ").toss()")
-          catch err
-            console.log("Error: " + err)
-
-          fs.writeFile __dirname + "/../specs/" + string((blueprint_path.split(".")[0]).split("/").pop()).underscore().s + "_spec.js", test_string, 'utf8', (err) ->
-              if err
-                console.log(err)
-              else
-                console.log("The file was saved!")
-
+    try
+      walker frisby, base_url, ast_json['resourceGroups']
+    catch error
+      throw error
 
 module.exports = bluefrisby

@@ -1,0 +1,348 @@
+FORMAT: X-1A
+HOST: https://alpha-api.app.net
+
+# Real World API
+This API Blueprint demonstrates a real world example documenting a portion of [App.net API](http://developers.app.net).
+
+NOTE: This document is a **work in progress**.
+
+# Group Posts
+This section groups App.net post resources.
+
++ Headers
+
+        Accept: application/json
+
+## Post [/stream/0/posts/{post_id}/{&q}]
+A Post is the other central object utilized by the App.net Stream API. It has rich text and annotations which comprise all of the content a users sees in their feed. Posts are closely tied to the follow graph...
+
++ Parameters
+    + post_id (string, `1`) ... The id of the Post.
+
++ Model (application/json)
+
+    ```js
+
+    ```
+
+### Retrieve a Post [GET]
+Returns a specific Post.
+
++ Parameters
+    + q (optional, string, `test`) ... A query string
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+
+        ```js
+              {
+    "meta": {
+        "code": 200
+    },
+    "data": {
+        "created_at": "2012-08-03T03:59:06Z",
+        "num_stars": 53,
+        "num_replies": 11,
+        "source": {
+            "link": "https://alpha.app.net",
+            "name": "Alpha",
+            "client_id": "caYWDBvjwt2e9HWMm6qyKS6KcATHUkzQ"
+        },
+        "text": "join.app.net getting ready for the world w/ @dalton @berg @voidfiles @jhubball @aaronblyth @andrew @vinitlee @mark @mintz @barmstrong @laughingman @mikegreenspan @ben #joinus",
+        "num_reposts": 5,
+        "id": "1",
+        "entities": {
+            "mentions": [
+                {
+                    "pos": 44,
+                    "id": "1",
+                    "len": 7,
+                    "name": "dalton"
+                },
+                {
+                    "pos": 52,
+                    "id": "2",
+                    "len": 5,
+                    "name": "berg"
+                },
+                {
+                    "pos": 58,
+                    "id": "3",
+                    "len": 10,
+                    "name": "voidfiles"
+                },
+                {
+                    "pos": 69,
+                    "id": "4",
+                    "len": 9,
+                    "name": "jhubball"
+                },
+                {
+                    "pos": 79,
+                    "id": "5",
+                    "len": 11,
+                    "name": "aaronblyth"
+                },
+                {
+                    "pos": 91,
+                    "id": "6",
+                    "len": 7,
+                    "name": "andrew"
+                },
+                {
+                    "pos": 99,
+                    "id": "7",
+                    "len": 9,
+                    "name": "vinitlee"
+                },
+                {
+                    "pos": 109,
+                    "id": "9",
+                    "len": 5,
+                    "name": "mark"
+                },
+                {
+                    "pos": 115,
+                    "id": "10",
+                    "len": 6,
+                    "name": "mintz"
+                },
+                {
+                    "pos": 122,
+                    "id": "11",
+                    "len": 11,
+                    "name": "barmstrong"
+                },
+                {
+                    "pos": 134,
+                    "id": "12",
+                    "len": 12,
+                    "name": "laughingman"
+                },
+                {
+                    "pos": 147,
+                    "id": "13",
+                    "len": 14,
+                    "name": "mikegreenspan"
+                },
+                {
+                    "pos": 162,
+                    "id": "14",
+                    "len": 4,
+                    "name": "ben"
+                }
+            ],
+            "hashtags": [
+                {
+                    "name": "joinus",
+                    "len": 7,
+                    "pos": 167
+                }
+            ],
+            "links": [
+                {
+                    "url": "http://join.app.net",
+                    "text": "join.app.net",
+                    "pos": 0,
+                    "len": 12
+                }
+            ]
+        },
+        "html": "<span itemscope=\"https://app.net/schemas/Post\"><a href=\"http://join.app.net\">join.app.net</a> getting ready for the world w/ <span data-mention-id=\"1\" data-mention-name=\"dalton\" itemprop=\"mention\">@dalton</span> <span data-mention-id=\"2\" data-mention-name=\"berg\" itemprop=\"mention\">@berg</span> <span data-mention-id=\"3\" data-mention-name=\"voidfiles\" itemprop=\"mention\">@voidfiles</span> <span data-mention-id=\"4\" data-mention-name=\"jhubball\" itemprop=\"mention\">@jhubball</span> <span data-mention-id=\"5\" data-mention-name=\"aaronblyth\" itemprop=\"mention\">@aaronblyth</span> <span data-mention-id=\"6\" data-mention-name=\"andrew\" itemprop=\"mention\">@andrew</span> <span data-mention-id=\"7\" data-mention-name=\"vinitlee\" itemprop=\"mention\">@vinitlee</span> <span data-mention-id=\"9\" data-mention-name=\"mark\" itemprop=\"mention\">@mark</span> <span data-mention-id=\"10\" data-mention-name=\"mintz\" itemprop=\"mention\">@mintz</span> <span data-mention-id=\"11\" data-mention-name=\"barmstrong\" itemprop=\"mention\">@barmstrong</span> <span data-mention-id=\"12\" data-mention-name=\"laughingman\" itemprop=\"mention\">@laughingman</span> <span data-mention-id=\"13\" data-mention-name=\"mikegreenspan\" itemprop=\"mention\">@mikegreenspan</span> <span data-mention-id=\"14\" data-mention-name=\"ben\" itemprop=\"mention\">@ben</span> <span data-hashtag-name=\"joinus\" itemprop=\"hashtag\">#joinus</span></span>",
+        "machine_only": false,
+        "user": {
+            "username": "mthurman",
+            "avatar_image": {
+                "url": "https://d2rfichhc2fb9n.cloudfront.net/image/5/8e2GE9hcM1idWf-1SU7FmFO0ch17InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvYTcvMDAvMDAvYTcwMDAwMDAwMDAwMDAwMC5qcGciLCJvIjoiIn0",
+                "width": 200,
+                "is_default": false,
+                "height": 200
+            },
+            "description": {
+                "text": "Software engineer at app.net. Use #bug / #feature to let us know if you have problems.",
+                "html": "<span itemscope=\"https://app.net/schemas/Post\">Software engineer at <a href=\"http://app.net.\">app.net.</a> Use <span data-hashtag-name=\"bug\" itemprop=\"hashtag\">#bug</span> / <span data-hashtag-name=\"feature\" itemprop=\"hashtag\">#feature</span> to let us know if you have problems.</span>",
+                "entities": {
+                    "mentions": [],
+                    "hashtags": [
+                        {
+                            "name": "bug",
+                            "len": 4,
+                            "pos": 34
+                        },
+                        {
+                            "name": "feature",
+                            "len": 8,
+                            "pos": 41
+                        }
+                    ],
+                    "links": [
+                        {
+                            "url": "http://app.net.",
+                            "text": "app.net.",
+                            "pos": 21,
+                            "len": 8
+                        }
+                    ]
+                }
+            },
+            "locale": "en_US",
+            "created_at": "2012-08-03T01:45:56Z",
+            "canonical_url": "https://alpha.app.net/mthurman",
+            "verified_domain": "mthurman.com",
+            "cover_image": {
+                "url": "https://d2rfichhc2fb9n.cloudfront.net/image/5/rydfXGpx3bn4IojOaWgpVtw0BBZ7InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvMTAvMDAvMDAvMTAwMDAwMDAwMDAwMDAwMC5wbmciLCJvIjoiIn0",
+                "width": 960,
+                "is_default": false,
+                "height": 265
+            },
+            "timezone": "America/Los_Angeles",
+            "counts": {
+                "following": 233,
+                "posts": 1642,
+                "followers": 1835,
+                "stars": 410
+            },
+            "type": "human",
+            "id": "8",
+            "name": "Mark Thurman"
+        },
+        "thread_id": "1",
+        "canonical_url": "https://alpha.app.net/mthurman/post/1"
+    }
+}
+        ```
+
+### Delete a Post [DELETE]
+Delete a Post. The current user must be the same user who created the Post. It returns the deleted Post on success.
+
++ Response 401
+
+    {
+        "meta": {
+            "error_id": "37ef7fea7ff54d09a069ff886903b8cf",
+            "code": 401,
+            "error_message": "Callrequiresauthentication: Thisresourcerequiresauthenticationandnotokenwasprovided."
+        }
+    }
+
+## Posts Collection [/stream/0/posts]
+A Collection of posts.
+
++ Model (application/json)
+
+    ```js
+    {
+        ["data": {
+            "id": "1", // note this is a string
+            "user": {
+                ...
+            },
+            "created_at": "2012-07-16T17:25:47Z",
+            "text": "@berg FIRST post on this new site #newsocialnetwork",
+            "html": "<span itemprop=\"mention\" data-mention-name=\"berg\" data-mention-id=\"2\">@berg</span> FIRST post on <a href=\"https://join.app.net\" rel=\"nofollow\">this new site</a> <span itemprop=\"hashtag\" data-hashtag-name=\"newsocialnetwork\">#newsocialnetwork</span>.",
+            "source": {
+                "client_id": "udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4",
+                "name": "Clientastic for iOS",
+                "link": "http://app.net"
+            },
+            "machine_only": false,
+            "reply_to": null,
+            "thread_id": "1",
+            "num_replies": 3,
+            "num_reposts": 0,
+            "num_stars": 0,
+            "entities": {
+                "mentions": [{
+                    "name": "berg",
+                    "id": "2",
+                    "pos": 0,
+                    "len": 5
+                }],
+                "hashtags": [{
+                    "name": "newsocialnetwork",
+                    "pos": 34,
+                    "len": 17
+                }],
+                "links": [{
+                    "text": "this new site",
+                    "url": "https://join.app.net"
+                    "pos": 20,
+                    "len": 13
+                }]
+            },
+            "you_reposted": false,
+            "you_starred": false
+        },
+        "meta": {
+            "code": 200,
+        }],
+        ...
+    }
+    ```
+
+### Create a Post [POST]
+Create a new Post object. Mentions and hashtags will be parsed out of the post text, as will bare URLs...
+
++ Request
+
+    [Post][]
+
++ Response 401
+
+    {
+        "meta": {
+            "error_id": "37ef7fea7ff54d09a069ff886903b8cf",
+            "code": 401,
+            "error_message": "Callrequiresauthentication: Thisresourcerequiresauthenticationandnotokenwasprovided."
+        }
+    }
+
+### Retrieve all Posts [GET]
+Retrieves all posts.
+
++ Response 401
+
+    {
+        "meta": {
+            "error_id": "37ef7fea7ff54d09a069ff886903b8cf",
+            "code": 401,
+            "error_message": "Callrequiresauthentication: Thisresourcerequiresauthenticationandnotokenwasprovided."
+        }
+    }
+
+## Stars [/stream/0/posts/{post_id}/star]
+A User’s stars are visible to others, but they are not automatically added to your followers’ streams.
+
++ Parameters
+    + post_id (string, `1`) ... The id of the Post.
+
+### Star a Post [POST]
+Save a given Post to the current User’s stars. This is just a “save” action, not a sharing action.
+
+*Note: A repost cannot be starred. Please star the parent Post.*
+
++ Response 401
+
+    {
+        "meta": {
+            "error_id": "37ef7fea7ff54d09a069ff886903b8cf",
+            "code": 401,
+            "error_message": "Callrequiresauthentication: Thisresourcerequiresauthenticationandnotokenwasprovided."
+        }
+    }
+
+### Unstar a Post [DELETE]
+Remove a Star from a Post.
+
++ Response 401
+
+    {
+        "meta": {
+            "error_id": "37ef7fea7ff54d09a069ff886903b8cf",
+            "code": 401,
+            "error_message": "Callrequiresauthentication: Thisresourcerequiresauthenticationandnotokenwasprovided."
+        }
+    }
